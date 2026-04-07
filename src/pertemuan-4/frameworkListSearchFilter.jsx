@@ -1,13 +1,32 @@
 import frameworkData from "./framework.json";
 import { useState } from "react";
 
-export default function FrameworkList() {
+export default function FrameworkListSearchFilter() {
   /** Deklrasai state **/
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTag, setSelectedTag] = useState("");
 
+  /*Inisialisasi DataForm*/
+  const [dataForm, setDataForm] = useState({
+    searchTerm: "",
+    selectedTag: "",
+    /*Tambah state lain beserta default value*/
+  });
+
+  const _searchTerm = dataForm.searchTerm.toLowerCase();
+  const _selectedTag = dataForm.selectedTag.toLowerCase();
+
+  /*Inisialisasi Handle perubahan nilai input form*/
+  const handleChange = (evt) => {
+    const { name, value } = evt.target;
+    setDataForm({
+      ...dataForm,
+      [name]: value,
+    });
+  };
+
   // logic filter
-  const _searchTerm = searchTerm.toLowerCase();
+
   const filteredFrameworks = frameworkData.filter((framework) => {
     const matchesSearch =
       framework.name.toLowerCase().includes(_searchTerm) ||
@@ -15,8 +34,8 @@ export default function FrameworkList() {
       framework.details.developer.toLowerCase().includes(_searchTerm) ||
       framework.tags.some((tag) => tag.toLowerCase().includes(_searchTerm));
 
-    const matchesTag = selectedTag
-      ? framework.tags.includes(selectedTag)
+    const matchesTag = dataForm.selectedTag
+      ? framework.tags.includes(dataForm.selectedTag)
       : true;
 
     return matchesSearch && matchesTag;
@@ -30,31 +49,30 @@ export default function FrameworkList() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 via-indigo-950 to-black p-10">
       <input
-  type="text"
-  name="searchTerm"
-  placeholder="Search framework..."
-  className="w-full p-3 mb-4 rounded-xl bg-gradient-to-r from-indigo-500/5 via-purple-500/5 to-blue-500/5 backdrop-blur-lg border border-indigo-400/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-400 transition-all duration-300 shadow-md hover:shadow-indigo-500/20 focus:shadow-indigo-500/40 hover:bg-white/10"
-  onChange={(e) => setSearchTerm(e.target.value) }
-/>
+        type="text"
+        name="searchTerm"
+        value={_searchTerm}
+        placeholder="Search framework..."
+        className="w-full p-3 mb-4 rounded-xl bg-gradient-to-r from-indigo-500/5 via-purple-500/5 to-blue-500/5 backdrop-blur-lg border border-indigo-400/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-400 transition-all duration-300 shadow-md hover:shadow-indigo-500/20 focus:shadow-indigo-500/40 hover:bg-white/10"
+        onChange={handleChange}
+      />
 
-<select
-  name="selectedTag"
-  className="w-full p-3 mb-4 rounded-xl bg-gradient-to-r from-indigo-500/5 via-purple-500/5 to-blue-500/5 backdrop-blur-lg border border-indigo-400/20 text-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-400 transition-all duration-300 shadow-md hover:shadow-indigo-500/20 focus:shadow-indigo-500/40 hover:bg-white/10 cursor-pointer"
->
-  <option value="" className="bg-slate-900 text-white">
-    All Tags
-  </option>
-  <option value="">All Tags</option>
-  {allTags.map((tag, index) => (
-    <option
-      key={index}
-      value={tag}
-      className="bg-slate-900 text-white"
-    >
-      {tag}
-    </option>
-  ))}
-</select>
+      <select
+        name="selectedTag"
+        value={_selectedTag}
+        onChange={handleChange}
+        className="w-full p-3 mb-4 rounded-xl bg-gradient-to-r from-indigo-500/5 via-purple-500/5 to-blue-500/5 backdrop-blur-lg border border-indigo-400/20 text-slate-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-400 transition-all duration-300 shadow-md hover:shadow-indigo-500/20 focus:shadow-indigo-500/40 hover:bg-white/10 cursor-pointer"
+      >
+        <option value="" className="bg-slate-900 text-white">
+          All Tags
+        </option>
+        <option value="">All Tags</option>
+        {allTags.map((tag, index) => (
+          <option key={index} value={tag} className="bg-slate-900 text-white">
+            {tag}
+          </option>
+        ))}
+      </select>
 
       {filteredFrameworks.map((item) => (
         <div
