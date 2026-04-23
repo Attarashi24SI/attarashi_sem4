@@ -12,11 +12,10 @@ const Sidebar = () => {
   const [active, setActive] = useState("dashboard");
   const menuClass = ({ isActive }) =>
     `flex cursor-pointer items-center rounded-xl p-4  space-x-2
-        ${
-          isActive
-            ? "text-hijau bg-green-200 font-extrabold"
-            : "text-gray-600 hover:text-hijau hover:bg-green-200 hover:font-extrabold"
-        }`;
+        ${isActive
+      ? "text-hijau bg-green-200 font-extrabold"
+      : "text-gray-600 hover:text-hijau hover:bg-green-200 hover:font-extrabold"
+    }`;
 
 
   return (
@@ -76,12 +75,50 @@ const Sidebar = () => {
           </NavLink>
         </li>
 
-        <li
-          onClick={() => setActive("reports")}
-          className={menuClass}
-        >
-          <FaChartBar /> Reports
+        <li>
+          <NavLink
+            id="menu-4"
+            to="/Error401"
+            onClick={() => setActive("error401")}
+            className={menuClass}
+          >
+            Error 401
+          </NavLink>
         </li>
+
+        <li>
+          <NavLink
+            id="menu-403"
+            to="/Error403"
+            onClick={() => setActive("error403")}
+            className={menuClass}
+          >
+            Error 403
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink
+            id="menu-400"
+            to="/Error400"
+            onClick={() => setActive("error400")}
+            className={menuClass}
+          >
+            Error 400
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink
+            id="menu-3"
+            to="/"
+            onClick={() => setActive("customers")}
+            className={menuClass}
+          >
+            <FaUsers /> Reports
+          </NavLink>
+        </li>
+
       </ul>
 
       {/* CARD */}
