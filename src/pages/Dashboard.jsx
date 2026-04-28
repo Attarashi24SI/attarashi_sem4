@@ -1,6 +1,6 @@
-import Sidebar from "../layouts/Sidebar";
-import Header from "../layouts/Header";
 import PageHeader from "../components/PageHeader";
+import Sidebar from "../components/Sidebar";
+import Header from "../components/Header";
 
 import {
   FaShoppingCart,
@@ -57,17 +57,13 @@ const Dashboard = () => {
   const COLORS = ["#ef4444", "#10b981", "#3b82f6"];
 
   return (
-    <div className="flex bg-gray-100 min-h-screen">
-      {/* SIDEBAR */}
-      <Sidebar />
 
-      <div className="flex-1">
-        {/* HEADER */}
-        <Header />
 
         <div className="p-6">
-          <PageHeader />
-
+          <PageHeader
+            title="Customers"
+            breadcrumb={["Home", "Customers"]}
+          />
           {/* CARDS */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-6">
             <div className="bg-white p-4 rounded-lg shadow flex items-center gap-4">
@@ -213,8 +209,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+
   );
 };
 

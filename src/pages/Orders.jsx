@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PageHeader from "../components/PageHeader";
-import Sidebar from "../layouts/Sidebar";
-import Header from "../layouts/Header";
+import Sidebar from "../components/Sidebar";
+import Header from "../components/Header";;
 import ordersData from "../assets/data/OrderData.json";
 
 export default function Orders() {
@@ -75,11 +75,7 @@ export default function Orders() {
   };
 
   return (
-    <div className="flex bg-gray-100 min-h-screen">
-      <Sidebar />
 
-      <div className="flex-1">
-        <Header />
 
         <div className="p-6">
           <PageHeader title="Orders" breadcrumb={["Home", "Orders"]} />
@@ -208,7 +204,6 @@ export default function Orders() {
             </table>
           </div>
         </div>
-      </div>
-    </div>
+
   );
 }

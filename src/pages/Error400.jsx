@@ -1,14 +1,11 @@
 import PageHeader from "../components/PageHeader";
-import Sidebar from "../layouts/Sidebar";
-import Header from "../layouts/Header";
+import Sidebar from "../components/Sidebar";
+import Header from "../components/Header";
 
 export default function Error400() {
     return (
         <>
-            <div className="flex bg-gray-100 min-h-screen">
-                <Sidebar />
-                <div className="flex-1">
-                    <Header />
+
                     <div className="p-6">
                         <PageHeader title="Error 400" breadcrumb={["Home", "Error 400"]} />
 
@@ -90,8 +87,7 @@ export default function Error400() {
                             />
                         </div>
                     </div>
-                </div>
-            </div>
+
         </>
     );
 }

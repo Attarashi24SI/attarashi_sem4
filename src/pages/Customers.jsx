@@ -1,7 +1,5 @@
 import { useState } from "react";
 import PageHeader from "../components/PageHeader";
-import Sidebar from "../layouts/Sidebar";
-import Header from "../layouts/Header";
 import customersData from "../assets/data/CustomersData";
 
 export default function Customers() {
@@ -59,13 +57,7 @@ export default function Customers() {
   };
 
   return (
-    <div className="flex bg-gray-100 min-h-screen">
-      {/* SIDEBAR */}
-      <Sidebar />
 
-      <div className="flex-1">
-        {/* HEADER */}
-        <Header />
 
         <div className="p-6">
           <PageHeader
@@ -190,7 +182,6 @@ export default function Customers() {
             </table>
           </div>
         </div>
-      </div>
-    </div>
+
   );
 }
