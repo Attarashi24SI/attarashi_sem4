@@ -1,0 +1,272 @@
+[
+  {
+    "id": 1,
+    "title": "Smartphone Galaxy S23",
+    "code": "ELC-001",
+    "category": "Electronics",
+    "brand": "Samsung",
+    "price": 12000000,
+    "stock": 45
+  },
+  {
+    "id": 2,
+    "title": "MacBook Pro M2 15-inch",
+    "code": "ELC-002",
+    "category": "Electronics",
+    "brand": "Apple",
+    "price": 24500000,
+    "stock": 12
+  },
+  {
+    "id": 3,
+    "title": "WH-1000XM5 Wireless Headphones",
+    "code": "ELC-003",
+    "category": "Electronics",
+    "brand": "Sony",
+    "price": 4500000,
+    "stock": 30
+  },
+  {
+    "id": 4,
+    "title": "Forerunner 255 Music",
+    "code": "ELC-004",
+    "category": "Electronics",
+    "brand": "Garmin",
+    "price": 5200000,
+    "stock": 18
+  },
+  {
+    "id": 5,
+    "title": "Smart TV OLED 55 Inch",
+    "code": "ELC-005",
+    "category": "Electronics",
+    "brand": "LG",
+    "price": 14000000,
+    "stock": 8
+  },
+  {
+    "id": 6,
+    "title": "Kulkas 2 Pintu Inverter",
+    "code": "APP-001",
+    "category": "Home Appliances",
+    "brand": "Sharp",
+    "price": 3500000,
+    "stock": 25
+  },
+  {
+    "id": 7,
+    "title": "Microwave Oven 20L",
+    "code": "APP-002",
+    "category": "Home Appliances",
+    "brand": "Panasonic",
+    "price": 1250000,
+    "stock": 40
+  },
+  {
+    "id": 8,
+    "title": "Mesin Cuci Front Load 8kg",
+    "code": "APP-003",
+    "category": "Home Appliances",
+    "brand": "Electrolux",
+    "price": 6500000,
+    "stock": 15
+  },
+  {
+    "id": 9,
+    "title": "Blender Kaca Seri 3000",
+    "code": "APP-004",
+    "category": "Home Appliances",
+    "brand": "Philips",
+    "price": 750000,
+    "stock": 60
+  },
+  {
+    "id": 10,
+    "title": "Smart Air Purifier 4",
+    "code": "APP-005",
+    "category": "Home Appliances",
+    "brand": "Xiaomi",
+    "price": 2100000,
+    "stock": 35
+  },
+  {
+    "id": 11,
+    "title": "Kaos Polos Katun Combed",
+    "code": "CLO-001",
+    "category": "Clothing",
+    "brand": "Uniqlo",
+    "price": 149000,
+    "stock": 150
+  },
+  {
+    "id": 12,
+    "title": "Celana Jeans Slim Fit 511",
+    "code": "CLO-002",
+    "category": "Clothing",
+    "brand": "Levi's",
+    "price": 899000,
+    "stock": 45
+  },
+  {
+    "id": 13,
+    "title": "Jaket Bomber Canvas",
+    "code": "CLO-003",
+    "category": "Clothing",
+    "brand": "Erigo",
+    "price": 250000,
+    "stock": 85
+  },
+  {
+    "id": 14,
+    "title": "Air Force 1 '07",
+    "code": "CLO-004",
+    "category": "Clothing",
+    "brand": "Nike",
+    "price": 1549000,
+    "stock": 22
+  },
+  {
+    "id": 15,
+    "title": "Kaos Kaki Olahraga Ankle",
+    "code": "CLO-005",
+    "category": "Clothing",
+    "brand": "Adidas",
+    "price": 99000,
+    "stock": 200
+  },
+  {
+    "id": 16,
+    "title": "Kopi Bubuk Arabika 200g",
+    "code": "GRO-001",
+    "category": "Groceries",
+    "brand": "Kapal Api",
+    "price": 25000,
+    "stock": 350
+  },
+  {
+    "id": 17,
+    "title": "Teh Celup Melati Isi 50",
+    "code": "GRO-002",
+    "category": "Groceries",
+    "brand": "Sariwangi",
+    "price": 12000,
+    "stock": 400
+  },
+  {
+    "id": 18,
+    "title": "Gula Pasir Premium 1kg",
+    "code": "GRO-003",
+    "category": "Groceries",
+    "brand": "Gulaku",
+    "price": 15500,
+    "stock": 500
+  },
+  {
+    "id": 19,
+    "title": "Beras Premium 5kg",
+    "code": "GRO-004",
+    "category": "Groceries",
+    "brand": "Sania",
+    "price": 75000,
+    "stock": 120
+  },
+  {
+    "id": 20,
+    "title": "Minyak Goreng Pouch 2L",
+    "code": "GRO-005",
+    "category": "Groceries",
+    "brand": "Bimoli",
+    "price": 38000,
+    "stock": 250
+  },
+  {
+    "id": 21,
+    "title": "Bola Sepak Size 5",
+    "code": "SPO-001",
+    "category": "Sports",
+    "brand": "Puma",
+    "price": 350000,
+    "stock": 40
+  },
+  {
+    "id": 22,
+    "title": "Raket Badminton Astrox",
+    "code": "SPO-002",
+    "category": "Sports",
+    "brand": "Yonex",
+    "price": 850000,
+    "stock": 25
+  },
+  {
+    "id": 23,
+    "title": "Matras Yoga TPE 8mm",
+    "code": "SPO-003",
+    "category": "Sports",
+    "brand": "Kettler",
+    "price": 275000,
+    "stock": 60
+  },
+  {
+    "id": 24,
+    "title": "Dumbbell Neoprene 5kg",
+    "code": "SPO-004",
+    "category": "Sports",
+    "brand": "Berwyn",
+    "price": 185000,
+    "stock": 80
+  },
+  {
+    "id": 25,
+    "title": "Sepatu Lari Gel-Kayano",
+    "code": "SPO-005",
+    "category": "Sports",
+    "brand": "Asics",
+    "price": 2200000,
+    "stock": 15
+  },
+  {
+    "id": 26,
+    "title": "Sampo Anti Ketombe 300ml",
+    "code": "BTY-001",
+    "category": "Personal Care",
+    "brand": "Head & Shoulders",
+    "price": 45000,
+    "stock": 125
+  },
+  {
+    "id": 27,
+    "title": "Sabun Mandi Cair 400ml",
+    "code": "BTY-002",
+    "category": "Personal Care",
+    "brand": "Lifebuoy",
+    "price": 35000,
+    "stock": 180
+  },
+  {
+    "id": 28,
+    "title": "Eau de Toilette Aqua 100ml",
+    "code": "BTY-003",
+    "category": "Personal Care",
+    "brand": "Bvlgari",
+    "price": 1800000,
+    "stock": 20
+  },
+  {
+    "id": 29,
+    "title": "Pembersih Wajah Pria 100g",
+    "code": "BTY-004",
+    "category": "Personal Care",
+    "brand": "Garnier Men",
+    "price": 32000,
+    "stock": 90
+  },
+  {
+    "id": 30,
+    "title": "Intensive Care Body Lotion 400ml",
+    "code": "BTY-005",
+    "category": "Personal Care",
+    "brand": "Vaseline",
+    "price": 48000,
+    "stock": 110
+  }
+]

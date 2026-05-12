@@ -12,11 +12,11 @@ const Sidebar = () => {
   const [active, setActive] = useState("dashboard");
   const menuClass = ({ isActive }) =>
     `flex cursor-pointer items-center rounded-xl p-4  space-x-2
-        ${isActive
-      ? "text-hijau bg-green-200 font-extrabold"
-      : "text-gray-600 hover:text-hijau hover:bg-green-200 hover:font-extrabold"
-    }`;
-
+        ${
+          isActive
+            ? "text-hijau bg-green-200 font-extrabold"
+            : "text-gray-600 hover:text-hijau hover:bg-green-200 hover:font-extrabold"
+        }`;
 
   return (
     <div className="w-64 bg-white min-h-screen shadow p-4">
@@ -119,6 +119,16 @@ const Sidebar = () => {
           </NavLink>
         </li>
 
+        <li>
+          <NavLink
+            id="product"
+            to="/product"
+            onClick={() => setActive("product")}
+            className={menuClass}
+          >
+            <FaUsers /> Products
+          </NavLink>
+        </li>
       </ul>
 
       {/* CARD */}

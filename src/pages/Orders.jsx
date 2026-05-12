@@ -1,7 +1,5 @@
 import { useState } from "react";
 import PageHeader from "../components/PageHeader";
-import Sidebar from "../components/Sidebar";
-import Header from "../components/Header";;
 import ordersData from "../assets/data/OrderData.json";
 
 export default function Orders() {
@@ -53,21 +51,26 @@ export default function Orders() {
     }
   };
 
-  const getStatusColor = (status) => {
+  // Diperbarui dengan gaya badge yang soft (light bg, dark text) agar senada
+  const getStatusBadgeStyle = (status) => {
     switch (status) {
       case "Completed":
-        return "bg-green-500";
+        return "bg-emerald-100 text-emerald-700";
       case "Pending":
-        return "bg-yellow-400";
+        return "bg-amber-100 text-amber-700";
       case "Cancelled":
-        return "bg-red-500";
+        return "bg-red-100 text-red-700";
       default:
-        return "bg-gray-400";
+        return "bg-slate-100 text-slate-700";
     }
   };
 
   const formatDate = (date) => {
-    return new Date(date).toLocaleDateString("id-ID");
+    return new Date(date).toLocaleDateString("id-ID", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
   };
 
   const formatPrice = (price) => {
@@ -75,135 +78,148 @@ export default function Orders() {
   };
 
   return (
+    <div className="p-6">
+      <PageHeader title="Orders" breadcrumb={["Home", "Orders"]} />
 
-
-        <div className="p-6">
-          <PageHeader title="Orders" breadcrumb={["Home", "Orders"]} />
-
-          {/* BUTTON */}
-          <div className="m-5">
-            <button
-              onClick={() => setShowForm(true)}
-              className="bg-emerald-500 text-white px-4 py-2 rounded-md hover:bg-emerald-600"
-            >
-              + Add Order
-            </button>
+      {/* HEADER SECTION - Sejajar dengan tombol */}
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-2xl font-extrabold text-slate-800 tracking-tight">
+          Order Dashboard
+        </h2>
+        <div className="flex items-center gap-4">
+          <div className="text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1 rounded-full">
+            {orders.length} Orders
           </div>
-
-          {/* FORM */}
-          {showForm && (
-            <div className="bg-white p-5 m-5 rounded-lg shadow-md">
-              <h2 className="text-xl font-bold mb-5">Add New Order</h2>
-
-              <form
-                onSubmit={handleAddOrder}
-                className="grid grid-cols-2 gap-5"
-              >
-                <input
-                  type="text"
-                  name="id"
-                  placeholder="Order ID (ex: ORD015)"
-                  value={formData.id}
-                  onChange={handleInputChange}
-                  className="px-3 py-2 border rounded-md"
-                  required
-                />
-
-                <input
-                  type="text"
-                  name="customerName"
-                  placeholder="Customer Name"
-                  value={formData.customerName}
-                  onChange={handleInputChange}
-                  className="px-3 py-2 border rounded-md"
-                  required
-                />
-
-                <input
-                  type="number"
-                  name="totalPrice"
-                  placeholder="Total Price"
-                  value={formData.totalPrice}
-                  onChange={handleInputChange}
-                  className="px-3 py-2 border rounded-md"
-                  required
-                />
-
-                <input
-                  type="date"
-                  name="orderDate"
-                  value={formData.orderDate}
-                  onChange={handleInputChange}
-                  className="px-3 py-2 border rounded-md"
-                  required
-                />
-
-                <select
-                  name="status"
-                  value={formData.status}
-                  onChange={handleInputChange}
-                  className="px-3 py-2 border rounded-md col-span-2"
-                >
-                  <option>Pending</option>
-                  <option>Completed</option>
-                  <option>Cancelled</option>
-                </select>
-
-                <div className="col-span-2 flex justify-end gap-3">
-                  <button
-                    type="submit"
-                    className="bg-emerald-500 text-white px-5 py-2 rounded-md"
-                  >
-                    Save
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setShowForm(false)}
-                    className="bg-gray-200 px-5 py-2 rounded-md"
-                  >
-                    Cancel
-                  </button>
-                </div>
-              </form>
-            </div>
-          )}
-
-          {/* TABLE */}
-          <div className="m-5 overflow-x-auto">
-            <table className="w-full bg-white shadow-md rounded-lg overflow-hidden">
-              <thead>
-                <tr className="bg-gray-100">
-                  <th className="p-3 text-left">Order ID</th>
-                  <th className="p-3 text-left">Customer</th>
-                  <th className="p-3 text-left">Date</th>
-                  <th className="p-3 text-left">Total</th>
-                  <th className="p-3 text-left">Status</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                {orders.map((order, index) => (
-                  <tr key={index} className="border-t">
-                    <td className="p-3">{order.id}</td>
-                    <td className="p-3">{order.customerName}</td>
-                    <td className="p-3">{formatDate(order.orderDate)}</td>
-                    <td className="p-3">Rp {formatPrice(order.totalPrice)}</td>
-                    <td className="p-3">
-                      <span
-                        className={`${getStatusColor(
-                          order.status
-                        )} text-white px-3 py-1 rounded-full text-xs`}
-                      >
-                        {order.status}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <button
+            onClick={() => setShowForm(!showForm)}
+            className="bg-emerald-500 text-white text-sm font-bold px-4 py-2 rounded-lg shadow-md shadow-emerald-500/20 hover:bg-emerald-600 transition-colors"
+          >
+            {showForm ? "Close Form" : "+ Add Order"}
+          </button>
         </div>
+      </div>
 
+      {/* FORM SECTION - Desain disamakan dengan form Customers */}
+      {showForm && (
+        <div className="bg-white p-6 mb-6 rounded-xl border border-slate-200 shadow-xl shadow-slate-200/60 transition-all">
+          <h2 className="text-lg font-bold mb-4 text-slate-800 border-b border-slate-100 pb-2">
+            Add New Order
+          </h2>
+
+          <form onSubmit={handleAddOrder} className="grid grid-cols-2 gap-5">
+            <input
+              type="text"
+              name="id"
+              placeholder="Order ID (ex: ORD015)"
+              value={formData.id}
+              onChange={handleInputChange}
+              className="px-4 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-slate-700 bg-slate-50"
+              required
+            />
+
+            <input
+              type="text"
+              name="customerName"
+              placeholder="Customer Name"
+              value={formData.customerName}
+              onChange={handleInputChange}
+              className="px-4 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-slate-700 bg-slate-50"
+              required
+            />
+
+            <input
+              type="number"
+              name="totalPrice"
+              placeholder="Total Price"
+              value={formData.totalPrice}
+              onChange={handleInputChange}
+              className="px-4 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-slate-700 bg-slate-50"
+              required
+            />
+
+            <input
+              type="date"
+              name="orderDate"
+              value={formData.orderDate}
+              onChange={handleInputChange}
+              className="px-4 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-slate-700 bg-slate-50"
+              required
+            />
+
+            <select
+              name="status"
+              value={formData.status}
+              onChange={handleInputChange}
+              className="px-4 py-2 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-slate-700 bg-slate-50 col-span-2"
+            >
+              <option value="Pending">Pending</option>
+              <option value="Completed">Completed</option>
+              <option value="Cancelled">Cancelled</option>
+            </select>
+
+            <div className="col-span-2 flex justify-end gap-3 mt-2">
+              <button
+                type="button"
+                onClick={() => setShowForm(false)}
+                className="bg-slate-100 text-slate-600 font-semibold text-sm px-5 py-2 rounded-lg hover:bg-slate-200 transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                className="bg-emerald-500 text-white font-semibold text-sm px-5 py-2 rounded-lg hover:bg-emerald-600 transition-colors shadow-md shadow-emerald-500/20"
+              >
+                Save Order
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
+
+      {/* TABLE SECTION - Identik dengan tampilan Product & Customers */}
+      <div className="overflow-hidden bg-white shadow-xl shadow-slate-200/60 rounded-xl border border-slate-200">
+        <table className="w-full text-left border-collapse">
+          <thead>
+            <tr className="bg-slate-50 border-b border-slate-200 text-slate-600">
+              <th className="p-4 font-bold text-xs uppercase">Order ID</th>
+              <th className="p-4 font-bold text-xs uppercase">Customer</th>
+              <th className="p-4 font-bold text-xs uppercase">Date</th>
+              <th className="p-4 font-bold text-xs uppercase text-right">Total</th>
+              <th className="p-4 font-bold text-xs uppercase text-center">Status</th>
+            </tr>
+          </thead>
+
+          <tbody className="divide-y divide-slate-100">
+            {orders.map((order, index) => (
+              <tr key={index} className="hover:bg-blue-50/30 transition-colors">
+                <td className="p-4">
+                  <span className="font-mono text-xs font-bold bg-slate-100 text-slate-700 px-2 py-1 rounded">
+                    {order.id}
+                  </span>
+                </td>
+                <td className="p-4 font-semibold text-slate-900">
+                  {order.customerName}
+                </td>
+                <td className="p-4 text-sm text-slate-600">
+                  {formatDate(order.orderDate)}
+                </td>
+                <td className="p-4 text-right font-medium text-slate-900">
+                  Rp {formatPrice(order.totalPrice)}
+                </td>
+                <td className="p-4 text-center">
+                  <span
+                    className={`inline-block px-3 py-1 rounded text-xs font-bold ${getStatusBadgeStyle(
+                      order.status
+                    )}`}
+                  >
+                    {order.status}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
   );
 }
